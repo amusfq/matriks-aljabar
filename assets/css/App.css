@@ -1,0 +1,121 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #cfe3ff;
+  font-family: 'Quicksand', sans-serif;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #000;
+  -webkit-box-shadow: #00000069 4px 4px 10px 1px;
+          box-shadow: #00000069 4px 4px 10px 1px;
+}
+
+.btn-back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+
+.btn-back:hover, .btn-back:focus {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+.title-icon {
+  font-weight: bold;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.matrix-input {
+  width: 50px;
+  text-align: center;
+}
+
+.matrix-output {
+  width: 43px;
+  text-align: center;
+}
+
+.matrix-form {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)), -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)), -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)), -webkit-gradient(linear, left top, left bottom, from(#000), to(#000));
+  background-image: linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000);
+  background-repeat: no-repeat;
+  background-size: 8px 3px;
+  background-position: top left, top right, bottom left, bottom right;
+  border: solid #000;
+  text-align: justify;
+  border-width: 0 3px;
+  padding: 10px 15px;
+  margin: 20px;
+  display: inline-block;
+}
+
+.baris {
+  margin-bottom: 5px;
+}
+
+.kolom {
+  margin: 0px 2px;
+}
+
+.equal {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.output-text {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.hidden {
+  display: none !important;
+}
+/*# sourceMappingURL=App.css.map */

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriks Aljabar</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- App -->
+    <link rel="stylesheet" href="./assets/css/App.css">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/5b12fc54c7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Kalkulator Matriks</div>
+        <div class="subtitle mb-3">created by Achmad Musyaffa Taufiqi</div>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-left">Matriks A <input type="number" min='2' class="matrix-input"
+                                id='matrix-a-row' value='2' onChange='changeInputA()' /> x <input type="number" min='2'
+                                class="matrix-input" id='matrix-a-col' value='2' onChange='changeInputA()' /></h4>
+                        <form id='form-a'>
+                            <div class='matrix-form' id="matrix-a-input"></div>
+                            <div>
+                                <button class='btn btn-sm btn-primary font-weight-bold' id='btn-det-a'>det A</button>
+                                <button class='btn btn-sm btn-primary font-weight-bold' id='btn-inv-a'>A<sup>-1</sup></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-left">Matriks B <input type="number" min='2' class="matrix-input"
+                                id='matrix-b-row' value='2' onChange='changeInputB()' /> x <input type="number" min='2'
+                                class="matrix-input" id='matrix-b-col' value='2' onChange='changeInputB()' /></h4>
+                        <form id='form-b'>
+                            <div class='matrix-form' id="matrix-b-input"></div>
+                            <div>
+                                <button class='btn btn-sm btn-primary font-weight-bold' id='btn-det-b'>det B</button>
+                                <button class='btn btn-sm btn-primary font-weight-bold' id='btn-inv-b'>B<sup>-1</sup></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <button class='btn btn-primary font-weight-bold' id='btn-plus'>A + B</button>
+                        <button class='btn btn-primary font-weight-bold' id='btn-minus'>A - B</button>
+                        <button class='btn btn-primary font-weight-bold' id='btn-multi'>A.B</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Hasil</h4>
+                        <div class="alert alert-danger hidden" role="alert" id='error'></div>
+                        <div class="text-center d-block d-md-inline d-lg-inline">
+                            <div class="equal d-block d-md-inline d-lg-inline" id='output-type'></div>
+                            <div class="matrix-form hidden" id="matrix-quest"></div>
+                            <div class="equal d-inline hidden" id='label-a'>A</div>
+                            <div class="matrix-form hidden" id="matrix-q-A"></div>
+                            <div class="equal d-block d-md-inline d-lg-inline hidden" id='operate'></div>
+                            <div class="ml-3 equal d-inline hidden" id='label-b'>B</div>
+                            <div class="matrix-form hidden" id="matrix-q-B"></div>
+                        </div>
+                        <div class="equal d-block d-md-inline d-lg-inline hidden" id='equal'>=</div>
+                        <div class="text-center d-block d-md-inline d-lg-inline">
+                            <div class="matrix-form hidden" id="matrix-output"></div>
+                        </div>
+                        <div class="output-text d-block d-md-inline d-lg-inline" id="output-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MathJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.0.0/math.min.js"></script>
+    <!-- App.js -->
+    <script src="./assets/js/App.js"></script>
+</body>
+
+</html>
