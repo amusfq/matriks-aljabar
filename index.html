@@ -25,13 +25,14 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h4 class="card-title text-left">Matriks A <input type="number" min='2' class="matrix-input"
-                                id='matrix-a-row' value='2' onChange='changeInputA()' /> x <input type="number" min='2'
-                                class="matrix-input" id='matrix-a-col' value='2' onChange='changeInputA()' /></h4>
+                                id='matrix-a-row' value='2' onChange='changeInput("a")' /> x <input type="number" min='2'
+                                class="matrix-input" id='matrix-a-col' value='2' onChange='changeInput("a")' /></h4>
                         <form id='form-a'>
                             <div class='matrix-form' id="matrix-a-input"></div>
                             <div>
-                                <button class='btn btn-sm btn-primary font-weight-bold' id='btn-det-a'>det A</button>
-                                <button class='btn btn-sm btn-primary font-weight-bold' id='btn-inv-a'>A<sup>-1</sup></button>
+                                <button type='button' class='btn btn-sm btn-primary font-weight-bold' onclick='determinant("a")'>det A</button>
+                                <button type='button' class='btn btn-sm btn-primary font-weight-bold' onclick='inverse("a")'>A<sup>-1</sup></button>
+                                <button type='button' class='btn btn-sm btn-primary font-weight-bold' onclick='eigen("a")'>Nilai Eigen</button>
                             </div>
                         </form>
                     </div>
@@ -41,13 +42,13 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h4 class="card-title text-left">Matriks B <input type="number" min='2' class="matrix-input"
-                                id='matrix-b-row' value='2' onChange='changeInputB()' /> x <input type="number" min='2'
-                                class="matrix-input" id='matrix-b-col' value='2' onChange='changeInputB()' /></h4>
+                                id='matrix-b-row' value='2' onChange='changeInput("b")' /> x <input type="number" min='2'
+                                class="matrix-input" id='matrix-b-col' value='2' onChange='changeInput("b")' /></h4>
                         <form id='form-b'>
                             <div class='matrix-form' id="matrix-b-input"></div>
                             <div>
-                                <button class='btn btn-sm btn-primary font-weight-bold' id='btn-det-b'>det B</button>
-                                <button class='btn btn-sm btn-primary font-weight-bold' id='btn-inv-b'>B<sup>-1</sup></button>
+                                <button type='button' class='btn btn-sm btn-primary font-weight-bold' onclick='determinant("b")'>det B</button>
+                                <button type='button' class='btn btn-sm btn-primary font-weight-bold' onclick='inverse("b")'>B<sup>-1</sup></button>
                             </div>
                         </form>
                     </div>
@@ -93,8 +94,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- MathJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.0.0/math.min.js"></script>
+    <!-- mathjax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+      MathJax = {
+        loader: {load: ["input/tex", "output/svg"]},
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+  </script>
     <!-- App.js -->
-    <script src="./assets/js/App.js"></script>
+    <script src="./assets/js/Bundle.js"></script>
 </body>
 
 </html>

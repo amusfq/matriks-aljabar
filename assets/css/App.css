@@ -118,4 +118,8 @@ a:hover {
 .hidden {
   display: none !important;
 }
+
+.normal {
+  font-size: 1rem;
+}
 /*# sourceMappingURL=App.css.map */

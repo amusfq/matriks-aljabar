@@ -1,26 +1,7 @@
+
 $(document).ready( () => {
-    changeInputA();
-    changeInputB();
-
-    $('#btn-det-a').click( e => {
-        e.preventDefault();
-        deter('a');
-    });
-
-    $('#btn-det-b').click( e => {
-        e.preventDefault();
-        deter('b');
-    });
-
-    $('#btn-inv-a').click( e => {
-        e.preventDefault();
-        inverse('a');
-    });
-
-    $('#btn-inv-b').click( e => {
-        e.preventDefault();
-        inverse('b');
-    });
+    changeInput('a');
+    changeInput('b');
 
     $('#btn-plus').click( e => {
         e.preventDefault();
@@ -68,7 +49,7 @@ function arit(act) {
     }
 }
 
-function deter (type) {
+window.determinant = function (type) {
     resetAll();
     const result = getArray(type);
     try {
@@ -84,7 +65,7 @@ function deter (type) {
     }
 }
 
-function inverse(type) {
+window.inverse = function (type) {
     resetAll();
     const result = getArray(type);
     try {
@@ -104,15 +85,88 @@ function inverse(type) {
     }
 }
 
+window.eigen = function (type) {
+    resetAll();
+    try {
+        // load the numeric.js library
+        const numeric = require('numeric')
+      
+        // import the numeric.js library into math.js
+        math.import(numeric, { wrap: true, silent: true })
+        const result = getArray('a');
+        if (math.eig) {
+          // calculate eigenvalues of a matrix
+          let eigen = math.evaluate('eig('+result+')').lambda.x
+          let x1 = "$ \\begin{aligned} A & = "
+          let x2 = "\\begin{pmatrix}"
+                    for (var i=0; i < result._data.length; i++) {
+                        let temp = "";
+                        for (var j=0; j < result._data[i].length; j++) {
+                            temp += result._data[i][j] + "&"
+                        }
+                        x2 += temp.slice(0, -1)+ "\\\\"
+                    }
+                x2 += "\\end{pmatrix}"
+          let x3= " \\\\ \\\\f(\\lambda) & = det(A-\\lambda1)\\\\ \\\\" 
+          let x4= "f(\\lambda) & = det" + x2 +
+                  "- \\lambda \\begin{pmatrix} "
+
+                  for (var i=0; i < result._data.length; i ++ ) {
+                      let temp = "";
+                      for (var j=0; j < result._data[i].length; j ++) {
+                        if (i == j) {
+                            temp += "1 &";
+                        } else {
+                            temp += "0 &";
+                        }
+                      }
+                      x4 +=temp.slice(0, -1)+ "\\\\"
+                  }
+
+                x4 += " \\end{pmatrix} " + 
+                  "= det\\begin{pmatrix} "
+                  
+                  for (var i=0; i < result._data.length; i ++ ) {
+                    let temp = "";
+                    for (var j=0; j < result._data[i].length; j ++) {
+                      if (i == j) {
+                          temp += result._data[i][j] + " - \\lambda &";
+                      } else {
+                          temp += result._data[i][j] + " &";
+                      }
+                    }
+                    x4 +=temp.slice(0, -1)+ "\\\\"
+                }
+                x4+= " \\end{pmatrix} \\\\" 
+        let x5 = ""
+        for (var i = 0; i < eigen.length; i++) {
+            x5 += "x_{"+(i+1)+"} & = "+eigen[i].toFixed(2)+" \\\\" 
+        }
+          let x6 = "\\end{aligned} $"
+
+            let hasil = x1 + x2 + x3 + x4 + x5 + x6;
+
+            $('#output-text').addClass('normal')
+          $('#output-text').html(hasil)
+
+            MathJax.typeset()
+        }
+      } catch (err) {
+        let msg = 'Ordo matriks harus sama';
+        $('#error').removeClass('hidden');
+        $('#error').html('<strong>Error!</strong> ' + msg);
+      }
+}
+
 function resetAll () {
     $('#error').addClass('hidden');
     var outputMatrix = $('#matrix-output');
     outputMatrix.html('');
     outputMatrix.addClass('hidden');
     var outputText = $('#output-text');
-    outputText.addClass('hidden');
+    outputText.removeClass('normal')
+    outputText.html('')
     $('#equal').addClass('hidden');
-    $('#output-text').addClass('hidden');
     $('#output-type').html('');;
     $('#matrix-quest').addClass('hidden');
     $("[id^='matrix-q-']").addClass('hidden');
@@ -145,7 +199,7 @@ function outputInput(array, type) {
         output.append('<div class="baris" id="baris-'+type+'-' + i + '"></div>');
         $.each(array[i], (index, value) => {
             $('#baris-'+type+'-' + i).append('<input type="text" class="matrix-output kolom" value="'+value+'" readonly/>');
-        });
+        });3
     }
 }
 
@@ -168,33 +222,18 @@ function outputArr(array) {
     }
 }
 
-function changeInputA() {
-    var inputA = $('#matrix-a-input');
-    inputA.html('');
-    var matrix_a_row = $('#matrix-a-row').val();
-    var matrix_a_col = $('#matrix-a-col').val();
+window.changeInput = function (type) {
+    var input = $('#matrix-'+type+'-input');
+    input.html('');
+    var matrix_row = $('#matrix-'+type+'-row').val();
+    var matrix_col = $('#matrix-'+type+'-col').val();
 
-    for (var i=0; i<matrix_a_row; i++) {
-        var baris = '<div class="baris" id="barisA-' + i + '" name="barisA-' + i + '"></div>';
-        inputA.append(baris);
-        for (var j=0; j < matrix_a_col; j ++) {
-            var kolom = '<input type="number" min="0" class="matrix-input kolom" id="kolomA-'+i+'-'+j+'" name="kolomA-'+i+'-'+j+'" value="0"/>';
-            $("#barisA-"+i).append(kolom);
+    for (var i=0; i<matrix_row; i++) {
+        var baris = '<div class="baris" id="baris'+type+'-' + i + '" name="baris'+type+'-' + i + '"></div>';
+        input.append(baris);
+        for (var j=0; j < matrix_col; j ++) {
+            var kolom = '<input type="number" class="matrix-input kolom" id="kolom'+type+'-'+i+'-'+j+'" name="kolom'+type+'-'+i+'-'+j+'" value="0"/>';
+            $("#baris"+type+"-"+i).append(kolom);
         }
     }
-}
-
-function changeInputB() {
-    var inputB = $('#matrix-b-input');
-    inputB.html('');
-    var matrix_b_row = $('#matrix-b-row').val();
-    var matrix_b_col = $('#matrix-b-col').val();
-    for (var i=0; i<matrix_b_row; i++) {
-        var baris = '<div class="baris" id="barisB-' + i + '" name="barisB-' + i + '"></div>';
-        inputB.append(baris);
-        for (var j=0; j < matrix_b_col; j ++) {
-            var kolom = '<input type="number" min="0" class="matrix-input kolom" id="kolomB-'+i+'-'+j+'" name="kolomB-'+i+'-'+j+'" value="0"/>';
-            $("#barisB-"+i).append(kolom);
-        }
-    }    
 }

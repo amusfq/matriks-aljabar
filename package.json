@@ -1,0 +1,24 @@
+{
+  "name": "matriks-aljabar",
+  "version": "1.0.0",
+  "description": "Live demo ada [disini](https://matriks-aljabar.herokuapp.com/) # Cara pakai 1. Clone Repository ini 2. Buka file index.html dibrowser 3. Siap digunakan",
+  "main": "index.html",
+  "dependencies": {
+    "matrix-eig": "^1.0.0",
+    "numeric": "^1.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amusfq/matriks-aljabar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amusfq/matriks-aljabar/issues"
+  },
+  "homepage": "https://github.com/amusfq/matriks-aljabar#readme"
+}
